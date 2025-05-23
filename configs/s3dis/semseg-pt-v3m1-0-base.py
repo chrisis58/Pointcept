@@ -1,11 +1,11 @@
 _base_ = ["../_base_/default_runtime.py"]
 
 # misc custom setting
-batch_size = 12  # bs: total bs in all gpus
-num_worker = 24
+batch_size = 4  # bs: total bs in all gpus
+num_worker = 2
 mix_prob = 0.8
 empty_cache = False
-enable_amp = True
+enable_amp = False
 
 # model settings
 model = dict(
@@ -125,7 +125,7 @@ data = dict(
             dict(
                 type="Collect",
                 keys=("coord", "grid_coord", "segment"),
-                feat_keys=("color", "normal"),
+                feat_keys=['coord', 'color'],
             ),
         ],
         test_mode=False,
@@ -151,7 +151,7 @@ data = dict(
             dict(
                 type="Collect",
                 keys=("coord", "grid_coord", "segment", "origin_segment", "inverse"),
-                feat_keys=("color", "normal"),
+                feat_keys=['coord', 'color'],
             ),
         ],
         test_mode=False,
@@ -180,7 +180,7 @@ data = dict(
                 dict(
                     type="Collect",
                     keys=("coord", "grid_coord", "index"),
-                    feat_keys=("color", "normal"),
+                    feat_keys=['coord', 'color'],
                 ),
             ],
             aug_transform=[
