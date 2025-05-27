@@ -1,8 +1,8 @@
 _base_ = ["../_base_/default_runtime.py"]
 
 # misc custom setting
-batch_size = 4  # bs: total bs in all gpus
-num_worker = 2
+batch_size = 2  # bs: total bs in all gpus
+num_worker = 6
 mix_prob = 0.8
 empty_cache = False
 enable_amp = False
@@ -117,7 +117,7 @@ data = dict(
                 return_grid_coord=True,
             ),
             dict(type="SphereCrop", sample_rate=0.6, mode="random"),
-            dict(type="SphereCrop", point_max=204800, mode="random"),
+            dict(type="SphereCrop", point_max=80960, mode="random"), # 204800 for original
             dict(type="CenterShift", apply_z=False),
             dict(type="NormalizeColor"),
             # dict(type="ShufflePoint"),
