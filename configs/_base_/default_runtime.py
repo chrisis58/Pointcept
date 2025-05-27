@@ -34,7 +34,7 @@ hooks = [
     dict(type="IterationTimer", warmup_iter=2),
     dict(type="InformationWriter"),
     dict(type="SemSegEvaluator"),
-    dict(type="CheckpointSaver", save_freq=1),
+    dict(type="CheckpointSaver", save_freq=5),
     dict(type="PreciseEvaluator", test_last=False),
 ]
 
