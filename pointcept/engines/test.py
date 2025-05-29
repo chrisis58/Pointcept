@@ -8,6 +8,7 @@ Please cite our work if the code is helpful to you.
 import json
 from uuid import uuid4
 import os
+import gc
 import time
 import numpy as np
 from collections import OrderedDict
@@ -308,6 +309,9 @@ class SemSegTester(TesterBase):
                     m_iou=m_iou,
                 )
             )
+
+            del pred, segment, data_dict, fragment_list
+            gc.collect()
 
         logger.info("Syncing ...")
         comm.synchronize()
