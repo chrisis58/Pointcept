@@ -289,6 +289,8 @@ class SemSegTester(TesterBase):
             iou = np.mean(iou_class[mask])
             acc = sum(intersection) / (sum(target) + 1e-10)
 
+            del intersection, union, target, mask, iou_class
+
             m_iou = np.mean(intersection_meter.sum / (union_meter.sum + 1e-10))
             m_acc = np.mean(intersection_meter.sum / (target_meter.sum + 1e-10))
 
